@@ -1,0 +1,6 @@
+Django
+djangorestframework
+psycopg2-binary
+transformers        # LLaMA
+torch
+llama_cpp_python
