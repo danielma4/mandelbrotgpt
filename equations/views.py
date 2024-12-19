@@ -3,8 +3,9 @@ from llama_cpp import Llama
 from rest_framework import viewsets, views, response
 from .serializers import MathematicianSerializer, EquationSerializer
 from .models import Mathematician, Equation
-from .llama_service import get_llama_response
+from .llama_service import get_llama_response, random_mathematician_ask_llama
 from rest_framework.exceptions import NotFound
+from rest_framework.decorators import action
 
 # views is where we define the logic of the API and handling requests!
 #with drf (djangorestframework), we can use viewsets which define crud ops for us
@@ -34,5 +35,14 @@ class LlamaViewSet(viewsets.ReadOnlyModelViewSet):
 
         return response.Response({
             "mathematician": mathematician.name,
+            "llama_response": llama_response
+        })
+
+
+    @action(detail=False, methods=['get'])
+    def random_mathematician(self, request):
+        mathematician_name, llama_response = random_mathematician_ask_llama()
+        return response.Response({
+            "mathematician": mathematician_name,
             "llama_response": llama_response
         })

@@ -8,7 +8,7 @@ function App() {
   const fetchRandomMathematician = async() => { //async arrow function to fetch llama data
     setLoading(true);
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/llama/rand_mathematician/'); //try fetching data from api endpoint, speciifically random mm
+      const response = await fetch('http://127.0.0.1:8000/api/llama/random_mathematician/'); //try fetching data from api endpoint, speciifically random mm
       const data = await response.json(); //json response returned from fetch
       console.log('API Response:', data);
       setResponseData(data);
