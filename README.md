@@ -1,0 +1,1 @@
+Inspired by a desire to learn more about famous mathematicians and their contributions to the history of mathematics (a good resource can be found [here](https://mathigon.org/timeline). Leverages a quantized 7b Llama model for text completion, as well as querying a database of 8000+ mathematicians.
