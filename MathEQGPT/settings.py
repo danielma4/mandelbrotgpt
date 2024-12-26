@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'equations',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'fractal'
 ]
 
 MIDDLEWARE = [

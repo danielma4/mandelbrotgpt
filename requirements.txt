@@ -6,3 +6,6 @@ torch
 llama_cpp_python
 django-cors-headers
 python-decouple
+numpy
+matplotlib
+futures

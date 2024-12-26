@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls), #the admin panel
     path('api/', include('equations.urls')), # includes routes for mathm, eq defined in eq/urls under /api/ path, ie /api/equations/
+    path('api/', include('fractal.urls'))
 ]
