@@ -35,7 +35,7 @@ function App() {
   const fetchRandomMathematician = async() => { //async arrow function to fetch llama data
     setLoading(true);
     try {
-      const response = await fetch('mandelbrotgpt-production.up.railway.app/api/llama/random_mathematician/'); //try fetching data from api endpoint, speciifically random mm
+      const response = await fetch('https://mandelbrotgpt-production.up.railway.app/api/llama/random_mathematician/'); //try fetching data from api endpoint, speciifically random mm
       const data = await response.json(); //json response returned from fetch
       console.log('API Response:', data);
       setResponseData(data);
@@ -55,7 +55,7 @@ function App() {
 
     setLoading(true);
     try {
-      const response = await fetch(`mandelbrotgpt-production.up.railway.app/api/llama/query_llama/?prompt=${query}`);
+      const response = await fetch(`https://mandelbrotgpt-production.up.railway.app/api/llama/query_llama/?prompt=${query}`);
       const data = await response.json();
       setResponseData(data);
     } catch (error) {
@@ -80,7 +80,7 @@ function App() {
     };
 
     try {
-      const response = await fetch('mandelbrotgpt-production.up.railway.app/api/fractal/', {
+      const response = await fetch('https://mandelbrotgpt-production.up.railway.app/api/fractal/', {
         method: 'POST', //posting to api
         headers: {
           'Content-Type': 'application/json',
