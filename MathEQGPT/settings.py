@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", config("SECRET_KEY"))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["mandelbrotgpt-production.up.railway.app"]
 
 STATIC_ROOT = Path(BASE_DIR, "staticfiles")
 
