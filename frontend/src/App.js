@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 function App() {
   const [responseData, setResponseData] = useState(null); // state hooks const [state, setState] = useState(initial state)
@@ -161,7 +162,7 @@ function App() {
             {responseData.error ? (
               <p style={styles.error}>{responseData.error}</p>
             ) : (
-              <p>{responseData.llama_response}</p>
+              <ReactMarkdown>{responseData.llama_response}</ReactMarkdown>
             )}
           </div>
         )}
