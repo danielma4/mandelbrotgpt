@@ -2,9 +2,8 @@ from llama_cpp import Llama
 from .models import Mathematician
 from huggingface_hub import InferenceClient
 from decouple import config
-import random
+import random, requests, os
 from huggingface_hub import InferenceClient
-import requests
 '''
 API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-hf"
 headers = {"Authorization": "Bearer" + config('API_KEY')}
@@ -14,7 +13,7 @@ output = query({
 })
 '''
 
-client = InferenceClient(api_key=config('API_KEY'))
+client = InferenceClient(api_key=os.environ['API_KEY'])
 
 #path = "/home/danielma/MathEQGPT/llama-2-7b.Q4_K_M.gguf"
 #llama = Llama(model_path=path, n_threads=24)
