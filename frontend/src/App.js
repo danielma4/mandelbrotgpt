@@ -1,8 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
 function App() {
-  const [responseData, setResponseData] = useState(null); // State for LLaMA response, default null
+  const [responseData, setResponseData] = useState(null); // state hooks const [state, setState] = useState(initial state)
   const [loading, setLoading] = useState(false); 
   const [query, setQuery] = useState(''); 
   const [fractalImage, setFractalImage] = useState(null);
@@ -25,6 +26,10 @@ function App() {
     'height': 'height (resolution)',
     'maxItr': 'iterations'
   }
+
+  useEffect(() => { //lambda func to detail side effects
+    document.title = 'MandelbrotGPT';
+  }, []); // dependencies tells react when to update (if dependencies update), empty means just do once
 
   const fetchRandomMathematician = async() => { //async arrow function to fetch llama data
     setLoading(true);
@@ -54,7 +59,7 @@ function App() {
       setResponseData(data);
     } catch (error) {
       console.error('Error querying LLaMA:', error);
-      setResponseData({ error: 'Failed to query LLaMA' });
+      setResponseData({ error: 'Failed to query' });
     } finally {
       setLoading(false);
     }
