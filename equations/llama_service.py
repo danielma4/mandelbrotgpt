@@ -13,7 +13,7 @@ output = query({
 })
 '''
 
-client = InferenceClient(api_key=os.environ['API_KEY'])
+client = InferenceClient(api_key=os.environ.get("API_KEY", config("API_KEY")))
 
 #path = "/home/danielma/MathEQGPT/llama-2-7b.Q4_K_M.gguf"
 #llama = Llama(model_path=path, n_threads=24)

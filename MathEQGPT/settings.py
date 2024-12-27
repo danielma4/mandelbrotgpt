@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-#from decouple import config
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,15 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-env_var = os.environ
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env_var['SECRET_KEY']
+SECRET_KEY = os.environ.get("SECRET_KEY", config("SECRET_KEY"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 STATIC_ROOT = Path(BASE_DIR, "staticfiles")
 
@@ -63,7 +61,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     #add url when hosted
-    'https://mandelbrotgpt.vercel.app/'
+    'https://mandelbrotgpt.vercel.app'
 ]
 
 
@@ -94,11 +92,11 @@ WSGI_APPLICATION = 'MathEQGPT.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env_var['DB_NAME'],
-        'USER': env_var['DB_USER'],
-        'PASSWORD': env_var['DB_PASSWORD'],
-        'HOST': env_var['DB_HOST'],
-        'PORT': env_var['DB_PORT'],
+        'NAME': os.environ.get("DB_NAME", config("DB_NAME")),
+        'USER': os.environ.get("DB_USER", config("DB_USER")),
+        'PASSWORD': os.environ.get("DB_PASSWORD", config("DB_PASSWORD")),
+        'HOST': os.environ.get("DB_HOST", config("DB_HOST")),
+        'PORT': os.environ.get("DB_PORT", config("DB_PORT")),
     }
 }
 
