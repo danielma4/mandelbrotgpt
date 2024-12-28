@@ -48,9 +48,6 @@ def calculate_fractal_chunk(start_row, end_row, real, imag, div_bound, max_itr):
             itr = 0
             while itr < max_itr and abs(z) < div_bound:
                 z = FORMULA(z, c)
-                if np.isnan(z.real) or np.isnan(z.imag) or np.isinf(z.real) or np.isinf(z.imag):
-                    print(f"Overflow at z = {z}, c = {c}")
-                    break
                 itr += 1
             esc_times[i - start_row, r] = itr 
 
