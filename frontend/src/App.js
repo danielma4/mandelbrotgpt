@@ -37,7 +37,7 @@ function App() {
     try {
       const response = await fetch('https://mandelbrotgpt-production.up.railway.app/api/llama/random_mathematician/'); //try fetching data from api endpoint, speciifically random mm
       const data = await response.json(); //json response returned from fetch
-      console.log('API Response:', data);
+      console.log('API Response:', data); //'https://mandelbrotgpt-production.up.railway.app/api/llama/random_mathematician/'
       setResponseData(data);
     } catch (error) {
       console.error('Error fetching random mathematician:', error);

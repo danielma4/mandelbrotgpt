@@ -40,7 +40,7 @@ def get_llama_response(prompt):
 
 def random_mathematician_ask_llama():
     mathematician = random.choice(Mathematician.objects.all())
-    prompt = (f"Tell me briefly about {mathematician.name}, who worked in {mathematician.fields}." 
+    prompt = (f"Your name is MandelbrotGPT, and you are a math-based large language model. Tell me briefly about {mathematician.name}, who worked in {mathematician.fields}." 
     + "Make sure you split the answer into three sections: history, contributions, and fun facts. Please keep the answer under 500 tokens."
     + f"Please also do not preface the response with 'I couldnt find any information on {mathematician.name}...', rather, if this happens, simply start with a brief description of the mathematician")
     llama_response = get_llama_response(prompt)

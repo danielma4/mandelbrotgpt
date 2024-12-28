@@ -73,13 +73,14 @@ class LlamaViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=False, methods=['get'])
     def query_llama(self, request):
         prompt = request.query_params.get('prompt', "").strip()
+        prompt_llama = "Note: Your name is MandelbrotGPT, and you are a math-based large language model. When asked what your name is, reflect this. " + prompt
 
         if not prompt:
             return response.Response({
                 'error': "no prompt provided"
             }, status=400)
         
-        llama_response = get_llama_response(prompt)
+        llama_response = get_llama_response(prompt_llama)
 
         return response.Response({
             "llama_response": llama_response

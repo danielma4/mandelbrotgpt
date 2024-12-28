@@ -38,7 +38,7 @@ def calculate_fractal_chunk(start_row, end_row, real, imag, div_bound, max_itr):
     int, int, arr, arr, lambda func, int, int -> arr (calculated chunk)
     '''
     esc_times = np.zeros((end_row - start_row, len(real)), dtype=int)
-    print(len(esc_times), len(esc_times[0]))
+    #print(len(esc_times), len(esc_times[0]))
 
     #for each pixel given in bounds, iterate through formula and check if diverges
     for i in range(start_row, end_row):
@@ -46,8 +46,11 @@ def calculate_fractal_chunk(start_row, end_row, real, imag, div_bound, max_itr):
             z = 0
             c = real[r] + imag[i] * 1j #j is imag dtype 
             itr = 0
-            while itr < max_itr and z < div_bound:
+            while itr < max_itr and abs(z) < div_bound:
                 z = FORMULA(z, c)
+                if np.isnan(z.real) or np.isnan(z.imag) or np.isinf(z.real) or np.isinf(z.imag):
+                    print(f"Overflow at z = {z}, c = {c}")
+                    break
                 itr += 1
             esc_times[i - start_row, r] = itr 
 
@@ -63,9 +66,9 @@ def generate_fractal(formula_str, width, height, div_bound, real_bound, imag_bou
     esc_times = np.zeros((height, width), dtype=int) #record escape times in num itrs for colors, rc major
 
     num_workers = os.cpu_count()
-    print(num_workers)
+    #print(num_workers)
     row_chunks = np.array_split(np.arange(height), num_workers) #designates chunks of rows for each cpu
-    print(row_chunks)
+    #print(row_chunks)
 
     with ProcessPoolExecutor(max_workers=num_workers) as executor:
         #divide by rows, len(esc_times) = #rows 
