@@ -68,6 +68,7 @@ function App() {
 
   const generateFractal = async () => {
     setError(null); // Clear previous errors
+    setLoading(true);
 
     const requestData = {
       formula: fractalParams.formula,
@@ -98,6 +99,7 @@ function App() {
     } catch (err) {
       setError(err.message);
     }
+    setLoading(false);
   };
 
   const updateParam = (key, value) => { //field name, new val
@@ -128,6 +130,7 @@ function App() {
 
 
         {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        {loading && <p>Loading...</p>}
 
         {fractalImage && (
           <div>
