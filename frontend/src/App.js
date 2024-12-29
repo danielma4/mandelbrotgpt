@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 function App() {
   const [responseData, setResponseData] = useState(null); // state hooks const [state, setState] = useState(initial state)
   const [loading, setLoading] = useState(false); 
+  const [loadingFrac, setLoadingFrac] = useState(false); 
   const [query, setQuery] = useState(''); 
   const [fractalImage, setFractalImage] = useState(null);
   const [error, setError] = useState(null);
@@ -68,7 +69,7 @@ function App() {
 
   const generateFractal = async () => {
     setError(null); // Clear previous errors
-    setLoading(true);
+    setLoadingFrac(true);
 
     const requestData = {
       formula: fractalParams.formula,
@@ -99,7 +100,7 @@ function App() {
     } catch (err) {
       setError(err.message);
     }
-    setLoading(false);
+    setLoadingFrac(false);
   };
 
   const updateParam = (key, value) => { //field name, new val
@@ -130,7 +131,7 @@ function App() {
 
 
         {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-        {loading && <p>Loading...</p>}
+        {loadingFrac && <p>Loading...</p>}
 
         {fractalImage && (
           <div>
