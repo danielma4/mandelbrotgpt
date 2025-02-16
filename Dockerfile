@@ -15,4 +15,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 #django commands
-CMD ["sh", "-c", "gunicorn MathEQGPT.wsgi:application --bind 0.0.0.0:${PORT}"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "MathEQGPT.wsgi:application"]
