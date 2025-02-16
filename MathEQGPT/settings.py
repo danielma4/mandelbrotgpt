@@ -14,6 +14,8 @@ from pathlib import Path
 from decouple import config
 import os
 
+PORT = os.environ.get("PORT", 8000)  # Default to 8000 locally
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
